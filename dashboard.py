@@ -70,6 +70,7 @@ class Dash(object):
             if (current_time - poke) < 10:
                 result += 1
             else:
+                print('removed poke')
                 pokes.remove(poke)
         return dash_html.replace('{content}', str(result))
 
