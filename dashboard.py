@@ -61,7 +61,7 @@ class Dash(object):
     def GET(self):
         current_time = time.time()
         import vars_namespace
-        if (vars_namespace.start_time + 15) < time.time():
+        if (vars_namespace.start_time + 15) > time.time():
             return dash_html.replace('{content}', '<i class="material-icons">autorenew</i>')
 
         result = 0
