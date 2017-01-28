@@ -67,10 +67,9 @@ class Dash(object):
 
         result = 0
         for poke in pokes:
-            if (current_time - poke) < 10:
+            if (current_time - poke) < 15:  # five seconds of margin
                 result += 1
             else:
-                print('removed poke')
                 pokes.remove(poke)
         return dash_html.replace('{content}', str(result))
 
