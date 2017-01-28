@@ -73,7 +73,7 @@ class Dash(object):
                 result += 1
                 seen_uuids.append(uuid)
             else:
-                pokes.remove(poke)
+                pokes.remove((poke, uuid))
         return dash_html.replace('{content}', str(result))
 
 if __name__ == "__main__":
