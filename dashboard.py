@@ -51,11 +51,11 @@ dash_html = '''
 pokes = []
 
 def new_poke():
-    pokes.append(time.time())
+    pokes.append((time.time(), uuid))
 
 class Ping(object):
     def POST(self, uuid):
-        new_poke()
+        new_poke(uuid)
         return 'Success'
 
 class Dash(object):
@@ -66,9 +66,12 @@ class Dash(object):
             return dash_html.replace('{content}', '<i class="material-icons">autorenew</i>')
 
         result = 0
-        for poke in pokes:
-            if (current_time - poke) < 15:  # five seconds of margin
+        seen_uuids = []
+        for poke, uuid in pokes:
+            if (current_time - poke) < 15 \  # five seconds of margin
+                and uuid not in seen_uuids:                
                 result += 1
+                seen_uuids.append(uuid)
             else:
                 pokes.remove(poke)
         return dash_html.replace('{content}', str(result))
