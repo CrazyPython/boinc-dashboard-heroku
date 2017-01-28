@@ -68,8 +68,8 @@ class Dash(object):
         result = 0
         seen_uuids = []
         for poke, uuid in pokes:
-            if (current_time - poke) < 15 \  # five seconds of margin
-                and uuid not in seen_uuids:                
+            # the below considers only pings within the last 15 secs
+            if (current_time - poke) < 15 and uuid not in seen_uuids:
                 result += 1
                 seen_uuids.append(uuid)
             else:
