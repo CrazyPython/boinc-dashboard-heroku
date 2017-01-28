@@ -60,6 +60,7 @@ class Ping(object):
 class Dash(object):
     def GET(self):
         current_time = time.time()
+        import vars_namespace
         if (vars_namespace.start_time + 15) < time.time():
             return dash_html.replace('{content}', '<i class="material-icons">autorenew</i>')
 
@@ -73,4 +74,5 @@ class Dash(object):
 
 if __name__ == "__main__":
     import vars_namespace
+    vars_namespace.start_time = time.time()
     app.run()
