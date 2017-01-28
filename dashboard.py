@@ -50,7 +50,7 @@ dash_html = '''
 
 pokes = []
 
-def new_poke():
+def new_poke(uuid):
     pokes.append((time.time(), uuid))
 
 class Ping(object):
