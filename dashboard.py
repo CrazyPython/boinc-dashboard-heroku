@@ -2,6 +2,7 @@ import web, time
 
 urls = (
     '/internals/v0.01-ping(.*)', 'Ping',
+    '//internals/v0.01-ping(.*)', 'Ping',
     '/', 'Dash',
 )
 app = web.application(urls, globals())
