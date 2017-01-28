@@ -15,7 +15,7 @@ dash_html = '''
 
 <head>
   <meta charset="UTF-8">
-  <title>BOINIC on Heroku Dashboard</title>
+  <title>Boincoku Dashboard</title>
       <style>
       .number-center {
   font-size: 10em;
@@ -47,11 +47,10 @@ dash_html = '''
   </html>
 '''
 
-
-pokes = []
+last_seen_uuid = {}
 
 def new_poke(uuid):
-    pokes.append((time.time(), uuid))
+    last_seen_uuid[uuid] = time.time()
 
 class Ping(object):
     def POST(self, uuid):
@@ -66,14 +65,12 @@ class Dash(object):
             return dash_html.replace('{content}', '<i class="material-icons">autorenew</i>')
 
         result = 0
-        seen_uuids = []
-        for poke, uuid in pokes:
-            # the below considers only pings within the last 15 secs
-            if (current_time - poke) < 15 and uuid not in seen_uuids:
+        for uuid, ping_time in last_seen_uuid.values():
+            # the below considers only pings within the last 30 secs
+            if (current_time - ping_time) < 30:
                 result += 1
-                seen_uuids.append(uuid)
             else:
-                pokes.remove((poke, uuid))
+                del last_seen_uuid[uuid]
         return dash_html.replace('{content}', str(result))
 
 if __name__ == "__main__":
