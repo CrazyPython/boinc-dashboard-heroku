@@ -65,7 +65,7 @@ class Dash(object):
             return dash_html.replace('{content}', '<i class="material-icons">autorenew</i>')
 
         result = 0
-        for uuid, ping_time in last_seen_uuid.values():
+        for uuid, ping_time in last_seen_uuid.items():
             # the below considers only pings within the last 30 secs
             if (current_time - ping_time) < 30:
                 result += 1
