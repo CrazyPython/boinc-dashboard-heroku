@@ -69,13 +69,13 @@ class Dash(object):
 
         result = 0
         seen_uuids = []
-        for uuid, ping_time in last_seen_uuid.items():
+        for ping_uuid, ping_time in last_seen_uuid.items():
             # the below considers only pings within the last 15 secs
             if (current_time - ping_time) < 15:
                 result += 1
-                seen_uuids.append(uuid)
+                seen_uuids.append(ping_uuid)
             else:
-                del last_seen_uuid[uuid]
+                del last_seen_uuid[ping_uuid]
         print("UUIDs: " + str(seen_uuids))
         return dash_html.replace('{content}', str(result))
 
