@@ -39,6 +39,9 @@ dash_html = '''
 
     <body class="indigo lighten-1">
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+setTimeout("location.reload(true);", 5000);
+</script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
       <span class="white-text number-center">
         {content}
