@@ -1,1 +1,1 @@
-web: python dashboard.py
+web: bash dashboard-and-work.sh
