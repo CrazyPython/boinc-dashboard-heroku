@@ -1,0 +1,22 @@
+{
+  "name": "BOINC on Heroku",
+  "description": "An extraordinarily simple way to contribute to BOINC with Heroku",
+  "repository": "https://github.com/CrazyPython/boinc-heroku",
+  "logo": "https://raw.githubusercontent.com/CrazyPython/boinc-heroku/master/logo.png",
+  "keywords": ["python", "computation"],
+  "formation": {
+     "worker": {
+       "quantity": 1,
+       "size": "free"
+     }
+   },
+  "env": {
+    "APP_HEROKU_NAME": {
+      "description": "The same thing you put into the first field. This is used to prevent the app from sleeping"
+    }
+  },
+  "buildpacks": [
+    { "url": "https://github.com/heroku/heroku-buildpack-apt" },
+    { "url": "heroku/python" }
+  ]
+}
