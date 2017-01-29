@@ -70,8 +70,8 @@ class Dash(object):
         result = 0
         seen_uuids = []
         for uuid, ping_time in last_seen_uuid.items():
-            # the below considers only pings within the last 30 secs
-            if (current_time - ping_time) < 30:
+            # the below considers only pings within the last 15 secs
+            if (current_time - ping_time) < 15:
                 result += 1
                 seen_uuids.append(uuid)
             else:
